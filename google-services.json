@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "85515527156",
+    "firebase_url": "https://fantasktic-ce4c5.firebaseio.com",
+    "project_id": "fantasktic-ce4c5",
+    "storage_bucket": "fantasktic-ce4c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:85515527156:android:69974a0c264f85e8",
+        "android_client_info": {
+          "package_name": "com.fantasktic.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "85515527156-nf2tlafknr0r4qldthhuvqvdvrtu7bdk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyq11w3RnSdWFolOaqVWUDoLQVVsjSnfM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

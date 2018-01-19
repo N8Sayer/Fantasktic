@@ -3,6 +3,16 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import RootNavigation from './navigation/RootNavigation';
+import * as firebase from 'firebase';
+
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyAAiUqVc0ydck82EQ6nshEPyYTrBpu6nxE",
+  authDomain: "fantasktic-ce4c5.firebaseapp.com",
+  databaseURL: "https://fantasktic-ce4c5.firebaseio.com/",
+  storageBucket: "gs://fantasktic-ce4c5.appspot.com/"
+};
+firebase.initializeApp(firebaseConfig);
 
 export default class App extends React.Component {
   state = {
@@ -41,6 +51,7 @@ export default class App extends React.Component {
         // We include SpaceMono because we use it in HomeScreen.js. Feel free
         // to remove this if you are not using it in your app
         'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+        'Roboto_medium': require('./assets/fonts/Roboto-Medium.ttf')
       }),
     ]);
   };
