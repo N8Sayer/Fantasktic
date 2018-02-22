@@ -24,7 +24,7 @@ const SignInForm = (props: ISignInFormProps) => {
           onChangeText={value => props.setFieldValue('password', value)}
         />
       </Item>
-      <Button rounded onPress={e => props.handleSubmit(e)}>
+      <Button rounded onPress={() => props.handleSubmit}>
         <Text>Sign In</Text>
       </Button>
     </Form>

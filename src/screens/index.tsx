@@ -5,6 +5,7 @@ import SettingsScreen from './Settings';
 import SignInScreen from './SignIn';
 import { NavigationRouteConfigMap, TabNavigatorConfig, TabNavigator } from 'react-navigation';
 import { Container, Text } from 'native-base';
+import { Sidebar } from './Sidebar';
 
 const routes: NavigationRouteConfigMap = {
 	Home: {
@@ -12,20 +13,19 @@ const routes: NavigationRouteConfigMap = {
 	},
 	'Sign In': {
 		screen: SignInScreen
+	},
+	Charts: {
+		screen: ChartsScreen
+	},
+	Settings: {
+		screen: SettingsScreen
 	}
-	// Charts: {
-	// 	screen: ChartsScreen
-	// },
-	// Settings: {
-	// 	screen: SettingsScreen
-	// }
 };
 
 const routeConfig: TabNavigatorConfig = {
 	initialRouteName: 'Home',
-	tabBarPosition: 'bottom',
-	animationEnabled: false,
-	swipeEnabled: true
+	swipeEnabled: true,
+	tabBarComponent: (props: any) => <Sidebar {...props} />
 };
 
 const DefaultNavigator = TabNavigator(routes, routeConfig);

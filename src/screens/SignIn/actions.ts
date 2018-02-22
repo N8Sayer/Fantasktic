@@ -18,11 +18,11 @@ export class signInSubmit {
       try {
         const response = await signIn(username, password);
         // const body = await response.json();
-        if (response) {
+        if (response === 'Success') {
           // If arbitrary success is returned
           dispatch(new signInSubmitSuccess());
-          dispatch(NavigationActions.back());
-          dispatch(new getUserInfo());
+          // dispatch(NavigationActions.back());
+          // dispatch(new getUserInfo());
         } else {
           throw new Error();
         }
