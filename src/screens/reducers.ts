@@ -1,21 +1,24 @@
 import { ApplicationAction, NoneAction } from 'src/actions';
-import userReducers, { IUserState } from './User/reducers';
+import userReducers, { IUserState } from 'src/userData/reducers';
 
-export interface IFeaturesState {
-	user: IUserState;
+export interface IActionsState {
+  user: IUserState;
 }
 
 const initialState = {
-	isLoggedIn: false,
-	user: userReducers(undefined, new NoneAction())
+  isLoggedIn: false,
+  user: userReducers(undefined, new NoneAction())
 };
 
-const reducers = (state: IFeaturesState = initialState, action: ApplicationAction): IFeaturesState => {
-	switch (action.type) {
-		default:
-			return {
-				user: userReducers(state.user, action)
-			};
-	}
+const reducers = (
+  state: IActionsState = initialState,
+  action: ApplicationAction
+): IActionsState => {
+  switch (action.type) {
+    default:
+      return {
+        user: userReducers(state.user, action)
+      };
+  }
 };
 export default reducers;

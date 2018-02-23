@@ -1,12 +1,14 @@
 import { Dispatch } from 'react-redux';
-import { ApplicationState } from '../../reducers';
+import { ApplicationState } from 'src/reducers';
 import { Toast } from 'native-base';
 import { NavigationActions } from 'react-navigation';
+import * as firebase from 'firebase';
+import { getUserInfo } from 'src/userData/actions';
 
 export enum ESignInActionTypes {
-  FORM_SUBMIT_START = 'HOME.SIGNIN.SUBMIT.START',
-  FORM_SUBMIT_FAILURE = 'HOME.SIGNIN.SUBMIT.FAILURE',
-  FORM_SUBMIT_SUCCESS = 'HOME.SIGNIN.SUBMIT.SUCCESS'
+  FORM_SUBMIT_START = 'SIGNIN.START',
+  FORM_SUBMIT_FAILURE = 'SIGNIN.FAILURE',
+  FORM_SUBMIT_SUCCESS = 'SIGNIN.SUCCESS'
 }
 
 export class signInSubmit {
@@ -15,11 +17,15 @@ export class signInSubmit {
       dispatch(new signInSubmitStart());
       try {
         const response = await signIn(username, password);
-        const body = await response.json();
-        // if responseJson not empty and status is 200 then dispatch this stuff
-        //   dispatch(new signInSubmitSuccess());
-        //   dispatch(NavigationActions.back());
-        //   dispatch(new getUserInfo());
+        // const body = await response.json();
+        if (response === 'Success') {
+          // If arbitrary success is returned
+          dispatch(new signInSubmitSuccess());
+          // dispatch(NavigationActions.back());
+          // dispatch(new getUserInfo());
+        } else {
+          throw new Error();
+        }
       } catch (e) {
         Toast.show({
           text: 'Incorrect username or password',
@@ -33,7 +39,15 @@ export class signInSubmit {
 }
 
 const signIn = (username: string, password: string) => {
-  // Sign in to Firebase
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(username, password)
+    .catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log([errorCode, errorMessage]);
+    });
+  return 'Success';
 };
 
 class signInSubmitStart {
